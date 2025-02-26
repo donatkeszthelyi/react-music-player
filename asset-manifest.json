@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/react-music-player/static/css/main.350b7176.css",
+    "main.css": "/react-music-player/static/css/main.2b6d3cf0.css",
     "main.js": "/react-music-player/static/js/main.9e02cc4d.js",
     "reactPlayerYouTube.js": "/react-music-player/static/js/reactPlayerYouTube.6b9257fb.chunk.js",
     "reactPlayerSoundCloud.js": "/react-music-player/static/js/reactPlayerSoundCloud.f9331e09.chunk.js",
@@ -17,7 +17,7 @@
     "reactPlayerFilePlayer.js": "/react-music-player/static/js/reactPlayerFilePlayer.b6919d9a.chunk.js",
     "reactPlayerPreview.js": "/react-music-player/static/js/reactPlayerPreview.371d4d66.chunk.js",
     "index.html": "/react-music-player/index.html",
-    "main.350b7176.css.map": "/react-music-player/static/css/main.350b7176.css.map",
+    "main.2b6d3cf0.css.map": "/react-music-player/static/css/main.2b6d3cf0.css.map",
     "main.9e02cc4d.js.map": "/react-music-player/static/js/main.9e02cc4d.js.map",
     "reactPlayerYouTube.6b9257fb.chunk.js.map": "/react-music-player/static/js/reactPlayerYouTube.6b9257fb.chunk.js.map",
     "reactPlayerSoundCloud.f9331e09.chunk.js.map": "/react-music-player/static/js/reactPlayerSoundCloud.f9331e09.chunk.js.map",
@@ -35,7 +35,7 @@
     "reactPlayerPreview.371d4d66.chunk.js.map": "/react-music-player/static/js/reactPlayerPreview.371d4d66.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.350b7176.css",
+    "static/css/main.2b6d3cf0.css",
     "static/js/main.9e02cc4d.js"
   ]
 }
