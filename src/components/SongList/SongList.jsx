@@ -1,46 +1,74 @@
-import React, { useState } from 'react';
-import { List, ListItem, ListItemText } from '@mui/material';
+import React from 'react';
+import { Box, Container, List, ListItem } from '@mui/material';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 
-const getMusicFiles = () => {
-  const musicContext = require.context('../../assets/music', false, /\.(mp3)$/);
-  return musicContext.keys().map((file) => ({
-    title: file.replace('./', '').replace(/\.(mp3)$/, ''),
-    url: musicContext(file),
-  }));
-};
+const SongList = ({ songs, setSongs, onSelectSong, selectedIndex }) => {
+  const handleOnDragEnd = (result) => {
+    const { source, destination } = result;
 
-const SongList = ({ onSelectSong, selectedIndex }) => {
-  const songs = getMusicFiles();
+    if (!destination) return;
 
-  const handleSelectSong = (song, index) => {
-    onSelectSong(song, index); // Call the onSelectSong function passed as prop
+    const updatedSongs = Array.from(songs);
+    const [movedSong] = updatedSongs.splice(source.index, 1);
+    updatedSongs.splice(destination.index, 0, movedSong);
+
+    setSongs(updatedSongs);
+
+    let newSelectedIndex = selectedIndex;
+    if (selectedIndex === source.index) {
+      newSelectedIndex = destination.index;
+    } else if (
+      selectedIndex > source.index &&
+      selectedIndex <= destination.index
+    ) {
+      newSelectedIndex -= 1;
+    } else if (
+      selectedIndex < source.index &&
+      selectedIndex >= destination.index
+    ) {
+      newSelectedIndex += 1;
+    }
+
+    onSelectSong(updatedSongs[newSelectedIndex], newSelectedIndex);
   };
 
   return (
-    <div>
-      <h2 variant="h6" gutterBottom>
-        Select a Song
-      </h2>
-      <List>
-        {songs.map((song, index) => (
-          <ListItem
-            button
-            key={index}
-            onClick={() => handleSelectSong(song, index)}
-            sx={{
-              backgroundColor:
-                selectedIndex === index ? 'lightgray' : 'transparent', // Highlight selected song
-              '&:hover': {
-                backgroundColor:
-                  selectedIndex === index ? 'lightgray' : 'rgba(0, 0, 0, 0.1)',
-              },
-            }}
-          >
-            <p>{song.title}</p>
-          </ListItem>
-        ))}
-      </List>
-    </div>
+    <Box id="song-list">
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="songlist-droppable">
+          {(provided) => (
+            <List ref={provided.innerRef} {...provided.droppableProps}>
+              {songs.map((song, index) => (
+                <Draggable key={song.url} draggableId={song.url} index={index}>
+                  {(provided) => (
+                    <Container
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      ref={provided.innerRef}
+                    >
+                      <ListItem
+                        button
+                        onClick={() => onSelectSong(song, index)}
+                        sx={{
+                          backgroundColor:
+                            selectedIndex === index
+                              ? 'rgba(0, 0, 0, 0.2)'
+                              : 'transparent',
+                          '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.1)' },
+                        }}
+                      >
+                        <p>{song.filename}</p>
+                      </ListItem>
+                    </Container>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </List>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </Box>
   );
 };
 

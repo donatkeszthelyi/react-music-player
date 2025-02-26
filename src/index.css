@@ -1,21 +1,133 @@
-/* Global Styles */
 body {
-  background: linear-gradient(-45deg, #d452ee, #a33ce7, #782fff, #239dd5);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: 100vh;
+  margin: 0;
+  color: #fff;
+  background-color: #000;
+  padding: 0;
 }
 
-@keyframes gradient {
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  filter: blur(150px);
+}
+
+.gradient {
+  position: absolute;
+  border-radius: 100%;
+  opacity: 0.6;
+  mix-blend-mode: screen;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.1, 0, 0.9, 1);
+}
+
+.gradient-1 {
+  background: rgb(204, 0, 0) none repeat scroll 0% 0% / auto padding-box
+    border-box;
+  width: 700px;
+  height: 700px;
+  animation-duration: 11s;
+  opacity: 0.6;
+  left: 60%;
+  top: 40%;
+  z-index: -2;
+  animation-name: animation-gradient-1;
+}
+.gradient-2 {
+  background: rgb(51, 204, 0) none repeat scroll 0% 0% / auto padding-box
+    border-box;
+  width: 600px;
+  height: 600px;
+  animation-duration: 11s;
+  opacity: 0.6;
+  left: 40%;
+  top: 60%;
+  z-index: -1;
+  animation-name: animation-gradient-2;
+}
+.gradient-3 {
+  background: rgb(0, 0, 204) none repeat scroll 0% 0% / auto padding-box
+    border-box;
+  width: 500px;
+  height: 500px;
+  animation-duration: 11s;
+  opacity: 0.6;
+  left: 50%;
+  top: 50%;
+  z-index: -3;
+  animation-name: animation-gradient-3;
+}
+
+@keyframes animation-gradient-1 {
   0% {
-    background-position: 0% 50%;
+    transform: translateY(-50%) translateX(-50%) rotate(-20deg) translateX(20%);
+  }
+  25% {
+    transform: translateY(-50%) translateX(-50%) skew(-15deg, -15deg)
+      rotate(80deg) translateX(30%);
   }
   50% {
-    background-position: 100% 50%;
+    transform: translateY(-50%) translateX(-50%) rotate(180deg) translateX(25%);
+  }
+  75% {
+    transform: translateY(-50%) translateX(-50%) skew(15deg, 15deg)
+      rotate(240deg) translateX(15%);
   }
   100% {
-    background-position: 0% 50%;
+    transform: translateY(-50%) translateX(-50%) rotate(340deg) translateX(20%);
   }
+}
+
+@keyframes animation-gradient-2 {
+  0% {
+    transform: translateY(-50%) translateX(-50%) rotate(40deg) translateX(-20%);
+  }
+  25% {
+    transform: translateY(-50%) translateX(-50%) skew(15deg, 15deg)
+      rotate(110deg) translateX(-5%);
+  }
+  50% {
+    transform: translateY(-50%) translateX(-50%) rotate(210deg) translateX(-35%);
+  }
+  75% {
+    transform: translateY(-50%) translateX(-50%) skew(-15deg, -15deg)
+      rotate(300deg) translateX(-10%);
+  }
+  100% {
+    transform: translateY(-50%) translateX(-50%) rotate(400deg) translateX(-20%);
+  }
+}
+
+@keyframes animation-gradient-3 {
+  0% {
+    transform: translateY(-50%) translateX(-50%) translateX(-15%)
+      translateY(10%);
+  }
+  20% {
+    transform: translateY(-50%) translateX(-50%) translateX(20%)
+      translateY(-30%);
+  }
+  40% {
+    transform: translateY(-50%) translateX(-50%) translateX(-25%)
+      translateY(-15%);
+  }
+  60% {
+    transform: translateY(-50%) translateX(-50%) translateX(30%) translateY(20%);
+  }
+  80% {
+    transform: translateY(-50%) translateX(-50%) translateX(5%) translateY(35%);
+  }
+  100% {
+    transform: translateY(-50%) translateX(-50%) translateX(-15%)
+      translateY(10%);
+  }
+}
+
+#player {
+  z-index: 10;
 }
 
 h1,
@@ -33,12 +145,18 @@ h1 {
 * {
   font-family: 'Space Grotesk', serif;
   font-optical-sizing: auto;
-  font-weight: 200;
+  font-weight: 400;
   font-style: normal;
 }
 
 li {
   cursor: pointer;
+}
+
+#playback-mode-button:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
+  background: transparent;
 }
 
 #play-pause-button:hover {
@@ -64,40 +182,41 @@ li {
 #play-pause-button {
   display: inline-block;
   cursor: pointer;
-  margin-right: 20px;
-  margin-bottom: 2px;
-  color: rgb(96, 28, 160);
+  margin-top: 2px;
+  color: rgb(0, 0, 0);
+  background: transparent;
+  margin-left: -26px;
 }
 
 #controls-container {
   width: 90vw;
-  max-width: 800px;
+  max-width: 600px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
-  background-color: rgba(255, 255, 255, 0.2);
   padding: 14px 40px 10px 40px;
-  box-shadow: #00000057 0px 0px 0px 2px, #00000057 6px 6px 0px 4px,
-    #00000057 12px 12px 0px 6px, #00000057 18px 18px 0px 8px;
+  border: 2px dashed #ccc;
+  background-color: #bebebe28;
 }
 
 #volume-slider {
-  width: 100px;
-  margin-right: 40px;
+  width: 80px;
 }
 
 #time-tracker {
-  width: 600px;
+  max-width: 360px;
+  width: 50vw;
+  margin-left: 20px;
 }
 
 .MuiSlider-thumb {
-  color: rgb(99, 0, 192);
+  color: rgb(0, 0, 0);
 }
 
 .MuiSlider-track {
-  color: rgb(99, 0, 192);
+  color: rgb(0, 0, 0);
 }
 
 .MuiSlider-rail {
@@ -109,6 +228,188 @@ li {
   box-shadow: none !important;
 }
 
+.MuiSwitch-root:focus,
+.MuiSwitch-switchBase:focus {
+  outline: none !important;
+}
+
+.MuiTouchRipple-root {
+  display: none !important;
+}
+
+.MuiSwitch-thumb {
+  background-color: white !important;
+}
+
+.Mui-checked .MuiSwitch-thumb {
+  background-color: rgb(63, 63, 63) !important;
+}
+
+.MuiSwitch-track {
+  background-color: rgb(182, 182, 182) !important;
+}
+
 .MuiIcon-fontSizeLarge {
   font-size: 40px !important;
+}
+
+#song-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  max-width: 300px;
+  min-width: 300px;
+}
+
+#song-list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background: transparent;
+}
+
+#song-list::-webkit-scrollbar {
+  width: 12px;
+  background: transparent;
+}
+
+#song-list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgb(0, 0, 0);
+}
+
+#song-list::-webkit-scrollbar-thumb:active {
+  background-color: rgb(132, 0, 255);
+}
+
+#clear-playlist-button {
+  color: white;
+  margin-left: -16px;
+  margin-top: -2px;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.34));
+  background: transparent;
+}
+
+#clear-playlist-button:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
+}
+
+#clear-playlist-button:hover .MuiSvgIcon-root {
+  transform: scale(1.1);
+}
+
+#clear-playlist-button:active {
+  transform: scale(1);
+  filter: none;
+  color: rgb(0, 0, 0);
+}
+
+#clear-playlist-button:active .MuiSvgIcon-root {
+  transform: scale(1);
+  filter: none;
+}
+
+#song-title {
+  font-size: x-large;
+  font-weight: bold;
+  margin-top: -2px;
+  text-align: center;
+}
+
+#song-artist {
+  font-size: large;
+  margin-top: -40px;
+  text-align: center;
+}
+
+#song-album-year {
+  font-size: medium;
+  margin-top: -2px;
+  text-align: center;
+}
+
+#lyrics {
+  max-height: 60vh;
+  overflow-y: auto;
+  margin-left: -5.5vw;
+}
+
+#lyrics::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background: transparent;
+}
+
+#lyrics::-webkit-scrollbar {
+  width: 12px;
+  background: transparent;
+}
+
+#lyrics::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgb(0, 0, 0);
+}
+
+#lyrics::-webkit-scrollbar-thumb:active {
+  background-color: rgb(0, 0, 0);
+}
+
+#music-note-top {
+  transform: scale(4);
+  margin-bottom: 10vh;
+  filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.34))
+    drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.34))
+    drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.34))
+    drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.34));
+}
+
+#music-note-bottom {
+  transform: scale(4);
+  margin-top: 10vh;
+  filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.34))
+    drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.34))
+    drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.34))
+    drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.34));
+}
+
+#skip-next-button {
+  margin-right: 8px;
+  margin-left: -8px;
+}
+
+#skip-back-button {
+  margin-left: -20px;
+  margin-right: -4px;
+}
+
+#skip-next-button:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
+}
+
+#skip-back-button:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
+}
+
+#skip-next-button:active {
+  transform: scale(1);
+  filter: none;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+#skip-back-button:active {
+  transform: scale(1);
+  filter: none;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+#skip-next-button,
+#skip-back-button {
+  display: inline-block;
+  cursor: pointer;
+  background: transparent;
+  color: rgb(0, 0, 0);
+  border: none;
 }

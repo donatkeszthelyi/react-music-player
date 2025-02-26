@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import SongList from './components/SongList/SongList';
+import React from 'react';
 import Player from './components/Player/Player';
-import { Container, CssBaseline } from '@mui/material'; // MUI Container and CssBaseline for layout
+import { Container } from '@mui/material';
 
 const App = () => {
-  const [selectedSong, setSelectedSong] = useState(null);
-
   return (
     <Container>
-      <h1>React Music Player</h1>
+      <div class="wrapper">
+        <div class="gradient gradient-1"></div>
+        <div class="gradient gradient-2"></div>
+        <div class="gradient gradient-3"></div>
+      </div>
       <Player />
     </Container>
   );

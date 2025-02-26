@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Slider, Box, Typography, IconButton } from '@mui/material';
-import { PlayArrow, Pause } from '@mui/icons-material';
+import { Slider, Box, Button } from '@mui/material';
+import { PlayArrow, Pause, SkipNext, SkipPrevious } from '@mui/icons-material';
 
 const Controls = ({
   isPlaying,
@@ -10,6 +10,9 @@ const Controls = ({
   currentTime,
   duration,
   onSeek,
+  isSongsEmpty,
+  onSkipNext,
+  onSkipBack,
 }) => {
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -19,13 +22,33 @@ const Controls = ({
 
   return (
     <Box id="controls-container">
-      <Box onClick={togglePlayPause} id="play-pause-button">
+      <Button
+        onClick={togglePlayPause}
+        disabled={isSongsEmpty}
+        id="play-pause-button"
+      >
         {isPlaying ? (
           <Pause fontSize="large" />
         ) : (
           <PlayArrow fontSize="large" />
         )}
-      </Box>
+      </Button>
+
+      <Button
+        onClick={onSkipBack}
+        disabled={isSongsEmpty}
+        id="skip-back-button"
+      >
+        <SkipPrevious fontSize="large" />
+      </Button>
+
+      <Button
+        onClick={onSkipNext}
+        disabled={isSongsEmpty}
+        id="skip-next-button"
+      >
+        <SkipNext fontSize="large" />
+      </Button>
 
       {/* Volume Slider */}
       <Box id="volume-slider-container">
@@ -48,6 +71,7 @@ const Controls = ({
           valueLabelDisplay="auto"
           valueLabelFormat={(value) => `${formatTime(value)}`}
           id="time-tracker"
+          disabled={isSongsEmpty}
         />
       </Box>
     </Box>

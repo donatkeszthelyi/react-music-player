@@ -18,6 +18,3 @@ Thumbs.db
 
 # Logs
 *.log
-
-# Ignore music files
-/src/assets/music/*
