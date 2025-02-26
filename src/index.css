@@ -3,14 +3,16 @@ body {
   color: #fff;
   background-color: #000;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 .wrapper {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   filter: blur(150px);
 }
@@ -159,6 +161,10 @@ li {
   background: transparent;
 }
 
+#playback-mode-button {
+  background: transparent;
+}
+
 #play-pause-button:hover {
   transform: scale(1.1);
   filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
@@ -263,7 +269,7 @@ li {
 #song-list::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  background: transparent;
+  background: rgba(5, 5, 5, 0.3);
 }
 
 #song-list::-webkit-scrollbar {
@@ -274,11 +280,11 @@ li {
 #song-list::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(12, 12, 12);
 }
 
 #song-list::-webkit-scrollbar-thumb:active {
-  background-color: rgb(132, 0, 255);
+  background-color: rgb(10, 10, 10);
 }
 
 #clear-playlist-button {
@@ -337,7 +343,7 @@ li {
 #lyrics::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  background: transparent;
+  background: rgba(5, 5, 5, 0.3);
 }
 
 #lyrics::-webkit-scrollbar {
@@ -348,11 +354,11 @@ li {
 #lyrics::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(12, 12, 12);
 }
 
 #lyrics::-webkit-scrollbar-thumb:active {
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(10, 10, 10);
 }
 
 #music-note-top {

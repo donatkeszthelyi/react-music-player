@@ -313,7 +313,7 @@ const Player = () => {
             marginTop: '-40px',
             paddingRight: '20px',
           }}
-          zIndex={100}
+          zIndex={10}
         >
           <h3>Lyrics</h3>
           {songs.length > 0 && songs[currentIndex]?.lyrics ? (
@@ -323,9 +323,7 @@ const Player = () => {
               </Typography>
             ))
           ) : (
-            <Typography variant="body2" color="textSecondary">
-              No lyrics available
-            </Typography>
+            <Typography variant="body2">No lyrics available</Typography>
           )}
         </Box>
       </Box>
