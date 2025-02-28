@@ -1,10 +1,15 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import jsmediatags from 'jsmediatags/dist/jsmediatags.min.js';
 
 function SongDropzone({ setSongs, fullScreen }) {
+  const [loading, setLoading] = useState(false);
+  const [firsLoad, setFirstLoad] = useState(false);
+
   const fetchAlbumCover = async (artist, album) => {
     try {
+      setLoading(true);
+      setFirstLoad(true);
       if (!artist || !album) return null;
 
       const searchUrl = `https://musicbrainz.org/ws/2/release-group?query=album:${encodeURIComponent(
@@ -30,12 +35,16 @@ function SongDropzone({ setSongs, fullScreen }) {
       }
     } catch (error) {
       console.error('Error fetching album cover:', error);
+    } finally {
+      setLoading(false);
     }
     return null;
   };
 
   const fetchLyrics = async (artist, title) => {
     try {
+      setLoading(true);
+      setFirstLoad(true);
       if (!artist || !title) return null;
 
       const searchUrl = `https://api.lyrics.ovh/v1/${artist
@@ -51,6 +60,8 @@ function SongDropzone({ setSongs, fullScreen }) {
       return searchData['lyrics'];
     } catch (error) {
       console.error('Error fetching album cover:', error);
+    } finally {
+      setLoading(false);
     }
     return null;
   };
@@ -98,14 +109,34 @@ function SongDropzone({ setSongs, fullScreen }) {
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    noClick: true,
     accept: '.mp3',
   });
 
   return !fullScreen ? (
-    <div {...getRootProps()} style={{ border: '2px dashed #ccc', padding: 20 }}>
+    <div
+      {...getRootProps()}
+      style={{
+        border: '2px dashed #ccc',
+        padding: 20,
+        minWidth: '260px',
+        maxWidth: '90vw',
+        height: '80px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <input {...getInputProps()} />
-      <p>+ Drag & drop more songs here</p>
+      {loading ? (
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      ) : (
+        <p>+ Drag & drop more songs here</p>
+      )}
     </div>
   ) : (
     <div
@@ -131,9 +162,19 @@ function SongDropzone({ setSongs, fullScreen }) {
           fontSize: '2rem',
           marginTop: '-5rem',
           zIndex: 1000,
+          textAlign: 'center',
         }}
       >
-        <p style={{ fontStyle: 'italic' }}>Drop your mp3 files here...</p>
+        {firsLoad ? (
+          <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        ) : (
+          <p style={{ fontStyle: 'italic' }}>Drop your mp3 files here...</p>
+        )}
       </div>
       <input {...getInputProps()} />
     </div>

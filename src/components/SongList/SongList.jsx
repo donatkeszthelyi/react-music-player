@@ -33,7 +33,7 @@ const SongList = ({ songs, setSongs, onSelectSong, selectedIndex }) => {
   };
 
   return (
-    <Box id="song-list">
+    <Box>
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId="songlist-droppable">
           {(provided) => (
@@ -52,9 +52,11 @@ const SongList = ({ songs, setSongs, onSelectSong, selectedIndex }) => {
                         sx={{
                           backgroundColor:
                             selectedIndex === index
-                              ? 'rgba(0, 0, 0, 0.2)'
+                              ? 'rgba(85, 85, 85, 0.2)'
                               : 'transparent',
-                          '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.1)' },
+                          '&:hover': {
+                            backgroundColor: 'rgba(85, 85, 85, 0.1)',
+                          },
                         }}
                       >
                         <p>{song.filename}</p>
