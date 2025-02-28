@@ -19,13 +19,13 @@ const Navbar = ({ setActiveSection }) => {
           setActiveSection(newValue);
         }}
         sx={{
-          borderTop: '2px dashed #ccc',
-          backgroundColor: '#bebebe28',
+          borderTop: '2px dashed #ccc !important',
+          backgroundColor: '#bebebe28 !important',
           '& .MuiBottomNavigationAction-root': {
-            color: 'white',
+            color: 'white !important',
           },
           '& .Mui-selected': {
-            color: 'black',
+            color: 'black !important',
           },
         }}
       >

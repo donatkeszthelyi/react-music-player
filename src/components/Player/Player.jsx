@@ -267,12 +267,12 @@ const Player = () => {
                       marginTop="-40px"
                       height="54vh"
                     >
-                      <Box>
+                      <Box width={'90%'} textAlign={'center'}>
                         {songs.length !== 0 &&
                         (songs[currentIndex].artist ||
                           songs[currentIndex].album ||
                           songs[currentIndex].year) ? (
-                          <p id="song-artist-album-year">
+                          <p id="song-artist-album-year" textAlign="center">
                             {songs[currentIndex].artist && (
                               <span>{songs[currentIndex].artist}</span>
                             )}
@@ -286,12 +286,12 @@ const Player = () => {
                               ` (${songs[currentIndex].year})`}
                           </p>
                         ) : (
-                          <Box id="music-note-top">
+                          <Box>
                             <MusicNote />
                           </Box>
                         )}
                       </Box>
-                      <p id="song-title">
+                      <p id="song-title" textAlign="center">
                         {songs.length !== 0 ? songs[currentIndex].title : ''}
                       </p>
                       <Box>
@@ -300,23 +300,22 @@ const Player = () => {
                             src={songs[currentIndex].image}
                             alt={songs[currentIndex]?.title || 'Album Cover'}
                             style={{
-                              width: '40vw',
-                              minWidth: '250px',
-                              height: '40vw',
-                              minHeight: '250px',
+                              width: '30vw',
+                              minWidth: '140px',
+                              height: '30vw',
+                              minHeight: '140px',
                               objectFit: 'cover',
                               boxShadow:
                                 '#00000057 0px 0px 0px 2px, #00000057 10px 10px 0px 4px,#00000057 20px 20px 0px 6px, #00000057 30px 30px 0px 8px',
                             }}
                           />
                         ) : (
-                          <Box id="music-note-bottom">
+                          <Box>
                             <MusicNote />
                           </Box>
                         )}
                       </Box>
                     </Box>
-
                     <Controls
                       isPlaying={isPlaying}
                       togglePlayPause={togglePlayPause}
@@ -460,6 +459,7 @@ const Player = () => {
                 style={{
                   overflowY: 'scroll',
                   maxHeight: '60vh',
+                  maxWidth: '23vw',
                   paddingRight: '20px',
                   marginTop: '40px',
                 }}

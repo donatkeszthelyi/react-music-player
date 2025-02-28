@@ -241,7 +241,7 @@ li {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 4vh;
+  margin-top: -4vh;
   padding: 10px 4px 10px 4px;
   border: 2px dashed #ccc;
   background-color: #bebebe28;

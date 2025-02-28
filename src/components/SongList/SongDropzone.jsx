@@ -1,10 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import jsmediatags from 'jsmediatags/dist/jsmediatags.min.js';
+import { useMediaQuery } from '@mui/material';
 
 function SongDropzone({ setSongs, fullScreen }) {
   const [loading, setLoading] = useState(false);
   const [firsLoad, setFirstLoad] = useState(false);
+
+  const isSmallScreen = useMediaQuery('(max-width: 1024px)');
 
   const fetchAlbumCover = async (artist, album) => {
     try {
@@ -118,7 +121,7 @@ function SongDropzone({ setSongs, fullScreen }) {
       style={{
         border: '2px dashed #ccc',
         padding: 20,
-        minWidth: '260px',
+        minWidth: isSmallScreen ? '260px' : '180px',
         maxWidth: '90vw',
         height: '80px',
         display: 'flex',
