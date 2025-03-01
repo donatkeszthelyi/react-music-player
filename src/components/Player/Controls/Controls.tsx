@@ -68,7 +68,7 @@ const Controls: React.FC<ControlsProps> = ({
             <Box className={styles.mobileVolumeSliderContainer}>
               <Slider
                 value={volume}
-                onChange={(event, newValue) =>
+                onChange={(_, newValue) =>
                   setVolume((newValue as number) / 100)
                 }
                 valueLabelDisplay="auto"
@@ -80,7 +80,7 @@ const Controls: React.FC<ControlsProps> = ({
           <Slider
             className={styles.mobileTimeTracker}
             value={currentTime}
-            onChange={(event, newValue) => onSeek(newValue as number)}
+            onChange={(_, newValue) => onSeek(newValue as number)}
             max={duration}
             valueLabelDisplay="auto"
             valueLabelFormat={(value) => `${formatTime(value)}`}
@@ -116,9 +116,7 @@ const Controls: React.FC<ControlsProps> = ({
           <Box className={styles.desktopVolumeSliderContainer}>
             <Slider
               value={volume}
-              onChange={(event, newValue) =>
-                setVolume((newValue as number) / 100)
-              }
+              onChange={(_, newValue) => onSeek(newValue as number)}
               valueLabelDisplay="auto"
               valueLabelFormat={(value) => `${Math.floor(value)}%`}
             />
@@ -127,7 +125,7 @@ const Controls: React.FC<ControlsProps> = ({
           <Slider
             className={styles.desktopTimeTracker}
             value={currentTime}
-            onChange={(event, newValue) => onSeek(newValue as number)}
+            onChange={(_, newValue) => onSeek(newValue as number)}
             max={duration}
             valueLabelDisplay="auto"
             valueLabelFormat={(value) => `${formatTime(value)}`}
