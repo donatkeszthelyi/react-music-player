@@ -19,7 +19,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
       <BottomNavigation
         showLabels
         value={activeTab}
-        onChange={(event, newValue) => {
+        onChange={(_, newValue) => {
           setActiveTab(newValue);
           setActiveSection(newValue);
         }}
