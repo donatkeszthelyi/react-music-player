@@ -1,0 +1,54 @@
+* {
+  z-index: 10;
+}
+
+.mobilePlaylistContainer {
+  width: 80vw;
+  margin: auto;
+}
+
+.mobilePlayerContainer {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+
+  * {
+    text-align: center;
+  }
+
+  .mobileSongInfo {
+    * {
+      margin-top: 2vh;
+    }
+  }
+}
+
+.mobileLyricsContainer {
+  margin-top: -8vh;
+  width: 100vw;
+}
+
+.playlistContainer {
+  margin-top: 10vh;
+}
+
+.playerContainer {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .playerSongInfo {
+    * {
+      text-align: center;
+    }
+  }
+}
+
+.lyricsContainer {
+  margin-top: 10vh;
+}
