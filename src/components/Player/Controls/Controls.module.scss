@@ -1,0 +1,179 @@
+.mobileControlsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 4px;
+  border: 2px dashed #ccc;
+  background-color: #bebebe28;
+  width: 80vw;
+  min-width: 300px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 16vh;
+
+  .mobileButtonsVolumeContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .mobilePlayPauseButton {
+      display: inline-block;
+      cursor: pointer;
+      color: rgb(0, 0, 0);
+      background: transparent;
+      margin-left: -26px;
+
+      &:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
+      }
+
+      &:active {
+        transform: scale(1);
+        filter: none;
+        color: rgba(0, 0, 0, 0.7);
+      }
+    }
+
+    .mobileSkipBackButton {
+      margin-left: -20px;
+      margin-right: -4px;
+      display: inline-block;
+      cursor: pointer;
+      background: transparent;
+      color: rgb(0, 0, 0);
+      border: none;
+
+      &:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
+      }
+
+      &:active {
+        transform: scale(1);
+        filter: none;
+        color: rgba(0, 0, 0, 0.7);
+      }
+    }
+
+    .mobileSkipNextButton {
+      margin-right: 8px;
+      margin-left: -8px;
+      display: inline-block;
+      cursor: pointer;
+      background: transparent;
+      color: rgb(0, 0, 0);
+      border: none;
+
+      &:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
+      }
+
+      &:active {
+        transform: scale(1);
+        filter: none;
+        color: rgba(0, 0, 0, 0.7);
+      }
+    }
+    .mobileVolumeSliderContainer {
+      align-content: center;
+      width: 100px;
+    }
+  }
+  .mobileTimeTracker {
+    width: 60vw;
+  }
+}
+
+.desktopControlsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10vh;
+  padding: 14px 40px 10px 40px;
+  border: 2px dashed #ccc;
+  background-color: #bebebe28;
+  width: 30vw;
+  min-width: 300px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 16vh;
+
+  .desktopPlayPauseButton {
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    background: transparent;
+    margin-left: -26px;
+
+    &:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
+    }
+
+    &:active {
+      transform: scale(1);
+      filter: none;
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  .desktopSkipBackButton {
+    margin-left: -20px;
+    margin-right: -4px;
+    display: inline-block;
+    cursor: pointer;
+    background: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+
+    &:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
+    }
+
+    &:active {
+      transform: scale(1);
+      filter: none;
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  .desktopSkipNextButton {
+    margin-right: 8px;
+    margin-left: -8px;
+    display: inline-block;
+    cursor: pointer;
+    background: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+
+    &:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
+    }
+
+    &:active {
+      transform: scale(1);
+      filter: none;
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  .desktopVolumeSliderContainer {
+    width: 80px;
+  }
+
+  .desktopTimeTracker {
+    width: 20vw;
+    max-width: 360px;
+    margin-left: 40px;
+    margin-top: -4px;
+  }
+}

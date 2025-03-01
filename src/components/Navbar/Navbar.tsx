@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import { BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
 import { QueueMusic, PlayCircle, Lyrics } from '@mui/icons-material';
 import { useMediaQuery } from '@mui/material';
+import styles from './Navbar.module.scss';
 
-const Navbar = ({ setActiveSection }) => {
-  const [activeTab, setActiveTab] = useState('player');
+interface NavbarProps {
+  setActiveSection: (section: string) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
+  const [activeTab, setActiveTab] = useState<string>('player');
   const isSmallScreen = useMediaQuery('(max-width: 1024px)');
 
   if (!isSmallScreen) return null;
 
   return (
-    <Box position="fixed" bottom={0} left={0} right={0} zIndex={1000}>
+    <Box className={styles.navbarContainer}>
       <BottomNavigation
         showLabels
         value={activeTab}
@@ -20,12 +25,15 @@ const Navbar = ({ setActiveSection }) => {
         }}
         sx={{
           borderTop: '2px dashed #ccc !important',
-          backgroundColor: '#bebebe28 !important',
+          backgroundColor: 'rgba(190, 190, 190, 0.16) !important',
+          backdropFilter: 'blur(10px) !important',
           '& .MuiBottomNavigationAction-root': {
             color: 'white !important',
           },
-          '& .Mui-selected': {
-            color: 'black !important',
+          '& .Mui-selected': { color: 'black !important' },
+          '& .MuiBottomNavigationAction-label': {
+            fontFamily: 'Space Grotesk, serif !important',
+            fontWeight: 400,
           },
         }}
       >

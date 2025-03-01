@@ -1,0 +1,69 @@
+.playlistControlsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2vh;
+
+  .playlistControlsMain {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    .clear {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .clearButton {
+        color: white;
+        margin-left: -16px;
+        margin-top: -2px;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.34));
+        background: transparent;
+
+        &:hover {
+          transform: scale(1.1);
+          filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
+        }
+
+        &:active {
+          transform: scale(1);
+          filter: none;
+          color: rgba(0, 0, 0, 0.7);
+        }
+      }
+    }
+
+    .autoplay {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .playbackModeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 0px;
+
+    .playbackMode {
+      display: flex;
+      align-items: center;
+      .playbackModeButton {
+        background: transparent;
+        color: white;
+
+        &:hover {
+          transform: scale(1.1);
+          filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.34));
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,34 @@
 import React from 'react';
 import { Box, Container, List, ListItem } from '@mui/material';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  DropResult,
+} from '@hello-pangea/dnd';
+import SongDropzone from '../SongDropzone/SongDropzone';
+import styles from './SongList.module.scss';
 
-const SongList = ({ songs, setSongs, onSelectSong, selectedIndex }) => {
-  const handleOnDragEnd = (result) => {
+interface Song {
+  filename: string;
+  url: string;
+  [key: string]: any;
+}
+
+interface SongListProps {
+  songs: Song[];
+  setSongs: React.Dispatch<React.SetStateAction<Song[]>>;
+  onSelectSong: (song: Song, index: number) => void;
+  selectedIndex: number;
+}
+
+const SongList: React.FC<SongListProps> = ({
+  songs,
+  setSongs,
+  onSelectSong,
+  selectedIndex,
+}) => {
+  const handleOnDragEnd = (result: DropResult) => {
     const { source, destination } = result;
 
     if (!destination) return;
@@ -33,7 +58,7 @@ const SongList = ({ songs, setSongs, onSelectSong, selectedIndex }) => {
   };
 
   return (
-    <Box>
+    <Box className={styles.songList}>
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId="songlist-droppable">
           {(provided) => (
@@ -47,7 +72,6 @@ const SongList = ({ songs, setSongs, onSelectSong, selectedIndex }) => {
                       ref={provided.innerRef}
                     >
                       <ListItem
-                        button
                         onClick={() => onSelectSong(song, index)}
                         sx={{
                           backgroundColor:
@@ -70,8 +94,12 @@ const SongList = ({ songs, setSongs, onSelectSong, selectedIndex }) => {
           )}
         </Droppable>
       </DragDropContext>
+      {songs.length !== 0 && (
+        <SongDropzone setSongs={setSongs} fullScreen={false} />
+      )}
     </Box>
   );
 };
 
 export default SongList;
+export type { Song };
